@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Basic Resets matching previous files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header Container */
+.header {
+  background-color: #f9fafb; /* Light gray background like image */
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 24px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Logo Section --- */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* --- Navigation Links --- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #4b5563; /* Gray text */
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-item:hover {
+  color: #111827;
+}
+
+.nav-item.active {
+  color: #2563eb; /* Active Blue */
+  font-weight: 600;
+}
+
+/* --- Right Actions (Buttons) --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Shared Button Styles */
+.btn-signup, .btn-login {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+/* Sign Up Button (Blue) */
+.btn-signup {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-signup:hover {
+  background-color: #1d4ed8;
+}
+
+/* Log In Button (Light Gray) */
+.btn-login {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.btn-login:hover {
+  background-color: #d1d5db;
+}
+
+/* User Profile Circle */
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-profile:hover {
+  background-color: #d1d5db;
+}
+
+/* Mobile Specifics (Hidden by default on Desktop) */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-auth-buttons {
+  display: none;
+}
+
+/* --- RESPONSIVE DESIGN (Tablet & Mobile) --- */
+@media screen and (max-width: 900px) {
+  
+  .hamburger-menu {
+    display: block; /* Show hamburger */
+    z-index: 1001;
+  }
+
+  /* Hide Desktop Buttons */
+  .header-actions .btn-signup,
+  .header-actions .btn-login {
+    display: none;
+  }
+
+  /* Transform Nav into Mobile Menu */
+  .nav-menu {
+    position: absolute;
+    top: 80px; /* Below header */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    /* Animation setup */
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Show Buttons inside Mobile Menu */
+  .mobile-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn-signup, .btn-login {
+    width: 100%;
+    padding: 12px;
+  }
+}
